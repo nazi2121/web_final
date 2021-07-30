@@ -1,0 +1,61 @@
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="./style.css">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+	<!-- for tests, DO NOT MODIFY next line -->
+	<link rel="stylesheet" href="https://unpkg.com/mocha/mocha.css" />
+</head>
+<body class="bg-secondary text-white">
+
+	<!-- DO NOT MODIFY THESE LINES -->
+	<!-- START tests -->
+	<div id="tests" class="container">
+		<div>
+			<button onclick="toggleTests()">ტესტების კონფიგურაციის ჩვენება/დამალვა</button>
+		</div>
+		<iframe hidden=true id="testconfig" src="./tests.html"></iframe>
+		<div id="mocha"></div>
+
+		<script src="https://unpkg.com/chai/chai.js"></script>
+		<script src="https://unpkg.com/mocha/mocha.js"></script>
+
+		<script class="mocha-init">
+			mocha.setup('bdd');
+			// mocha.checkLeaks();
+		</script>
+		<script src="./config.js"></script>
+		<script src="./tests.js"></script>
+	</div>
+	<!-- END tests -->
+	<!-- You can modify lines after this -->
+	<div id="app">
+
+		<div class="container text-center">
+			<p style="font-size:30px;">Check out currency lists! <a href="./currencies.html" style="text-decoration: none;">go...</a></p>
+		</div>
+		<div id="user_container" class="container">
+			<input type="text" class="form-control" id="username" placeholder="what's your name?">
+		</div>
+		<div id="post_container" class="container">
+			<textarea id="post_text" class="form-control"  placeholder="hey, what's up?"></textarea>
+			<button id="new_post" class="form-control btn btn-warning" onclick="newPost()">post</button>
+		</div>
+		<div class="container">
+			<h3 class="font-italic text-center py-5">My Posts</h3>
+			<div id="posts">
+
+			</div>
+		</div>
+		<script type="text/javascript" src="./database.js"></script>
+		<script type="text/javascript" src="./index.js"></script>
+	</div>
+</body>
+</html>

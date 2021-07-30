@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </head>
+  <body class="bg-secondary text-white">
+
+    <div class="container">
+      <div class="container w-50 my-5">
+        <div class="form-group">
+          <label for="currency_to_convert"><span style="font-size:20px;">From:</span></label>
+          <select class="form-control" id="currency_to_convert"></select>
+        </div>
+        <div class="form-group">
+          <label for="currency_to_convert"><span style="font-size:20px;">To:</span></label>
+          <select class="form-control" id="convert_to_currency"></select>
+        </div>
+        <button class="form-control btn btn-info" type="button" onclick="conversation()" id="convertBtn">Convert</button>
+      </div>
+      <div class="container w-50 my-5">
+          <h4>Conversation answer : <span class="text-italic" id="currency"></span></h4>
+      </div>
+    </div>
+
+
+    <script>
+      $.get("https://api.coingecko.com/api/v3/exchange_rates").then(response => {
+        console.log(response);
+
+        let currencyToConvertEM = document.getElementById("currency_to_convert");
+
+        for (const [ key, value ] of Object.entries(response.rates)){
+          let optionEM = `<option value="${value.value}">${value.name}</option>` ;
+          currencyToConvertEM.innerHTML += optionEM
+        }
+
+        let convertToCurrencyEM = document.getElementById("convert_to_currency");
+
+        for (const [ key, value ] of Object.entries(response.rates)){
+          let optionEM = `<option value="${value.value}">${value.name}</option>` ;
+          convertToCurrencyEM.innerHTML += optionEM
+        }
+
+      })
+
+      function conversation(){
+        let currencyToConvertEM = document.getElementById("currency_to_convert");
+        let convertToCurrencyEM = document.getElementById("convert_to_currency");
+        let msg = convertToCurrencyEM.value/currencyToConvertEM.value
+
+        document.getElementById("currency").innerText = msg;
+      }
+    </script>
+  </body>
+</html>

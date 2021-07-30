@@ -1,0 +1,64 @@
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="./style.css">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+	<!-- for tests, DO NOT MODIFY next line -->
+	<link rel="stylesheet" href="https://unpkg.com/mocha/mocha.css" />
+</head>
+<body class="bg-info text-white">
+	<!-- DO NOT MODIFY THESE LINES -->
+	<!-- START tests -->
+	<div id="tests" class="container">
+		<div>
+			<button onclick="toggleTests()">ტესტების კონფიგურაციის ჩვენება/დამალვა</button>
+		</div>
+		<iframe hidden=true id="testconfig" src="./tests.html"></iframe>
+		<div id="mocha"></div>
+
+		<script src="https://unpkg.com/chai/chai.js"></script>
+		<script src="https://unpkg.com/mocha/mocha.js"></script>
+
+		<script class="mocha-init">
+			mocha.setup('bdd');
+			// mocha.checkLeaks();
+		</script>
+		<script src="./config.js"></script>
+		<script src="./tests_register.js"></script>
+	</div>
+	<!-- END tests -->
+	<!-- You can modify lines after this -->
+
+	<!-- You can modify lines after this -->
+	<div id="app" class="border border-5 my-5">
+		<div class="form-group text-center">
+			<label class="font-italic" for="username"><h3>Username:</h3></label>
+			<input class="form-control mb-5" type="text" id="username">
+		</div>
+		<div class="form-group text-center">
+			<label class="font-italic" for="password"><h3>Password:</h3></label>
+			<input class="form-control mb-5" type="password" id="password">
+		</div>
+		<div class="form-group text-center">
+			<label class="font-italic" for="repeat_password"><h3>Repeat Password:</h3></label>
+			<input class="form-control mb-5" type="password" id="repeat_password">
+		</div>
+
+		<div class="form-group">
+			<button class="form-control my-3 btn btn-success" type="button" onclick="register()" id="register">Register</button>
+		</div>
+
+		<div class="alert alert-danger" id="error_message"></div>
+	</div>
+	<script type="text/javascript" src="./database.js"></script>
+	<script type="text/javascript" src="./register.js"></script>
+
+</body>
+</html>
